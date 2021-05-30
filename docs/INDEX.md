@@ -25,7 +25,7 @@ These documentation pages are also rendered using marked 💯
 
 <h2 id="usage">Usage</h2>
 
-### Warning: 🚨 Marked does not [sanitize](https://marked.js.org/#/USING_ADVANCED.md#options) the output HTML. Please use a sanitize library, like [DOMPurify](https://github.com/cure53/DOMPurify) (recommended), [sanitize-html](https://github.com/apostrophecms/sanitize-html) or [insane](https://github.com/bevacqua/insane) on the output HTML! 🚨
+### Warning: 🚨 Marked does not [sanitize](/using_advanced#options) the output HTML. Please use a sanitize library, like [DOMPurify](https://github.com/cure53/DOMPurify) (recommended), [sanitize-html](https://github.com/apostrophecms/sanitize-html) or [insane](https://github.com/bevacqua/insane) on the output HTML! 🚨
 
 **CLI**
 
@@ -62,18 +62,25 @@ $ marked -s "*hello world*"
 </html>
 ```
 
+**Node.js**
 
-Marked offers [advanced configurations](#/USING_ADVANCED.md) and [extensibility](#/USING_PRO.md) as well.
+```js
+const marked = require("marked");
+const html = marked('# Marked in Node.js\n\nRendered by **marked**.');
+```
+
+
+Marked offers [advanced configurations](/using_advanced) and [extensibility](/using_pro) as well.
 
 <h2 id="specifications">Supported Markdown specifications</h2>
 
 We actively support the features of the following [Markdown flavors](https://github.com/commonmark/CommonMark/wiki/Markdown-Flavors).
 
-|Flavor                                                     |Version    |
-|:----------------------------------------------------------|:----------|
-|The original markdown.pl                                   |--         |
-|[CommonMark](http://spec.commonmark.org/0.29/)             |0.29       |
-|[GitHub Flavored Markdown](https://github.github.com/gfm/) |0.29       |
+| Flavor                                                     | Version | Status                                                             |
+| :--------------------------------------------------------- | :------ | :----------------------------------------------------------------- |
+| The original markdown.pl                                   | --      |                                                                    |
+| [CommonMark](http://spec.commonmark.org/0.29/)             | 0.29    | [Work in progress](https://github.com/markedjs/marked/issues/1202) |
+| [GitHub Flavored Markdown](https://github.github.com/gfm/) | 0.29    | [Work in progress](https://github.com/markedjs/marked/issues/1202) |
 
 By supporting the above Markdown flavors, it's possible that Marked can help you use other flavors as well; however, these are not actively supported by the community.
 
@@ -81,5 +88,4 @@ By supporting the above Markdown flavors, it's possible that Marked can help you
 
 The only completely secure system is the one that doesn't exist in the first place. Having said that, we take the security of Marked very seriously.
 
-Therefore, please disclose potential security issues by email to the project [committers](#/AUTHORS.md) as well as the [listed owners within NPM](https://docs.npmjs.com/cli/owner). We will provide an initial assessment of security reports within 48 hours and should apply patches within 2 weeks (also, feel free to contribute a fix for the issue).
-
+Therefore, please disclose potential security issues by email to the project [committers](/authors) as well as the [listed owners within NPM](https://docs.npmjs.com/cli/owner). We will provide an initial assessment of security reports within 48 hours and should apply patches within 2 weeks (also, feel free to contribute a fix for the issue).

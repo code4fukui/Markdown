@@ -17,11 +17,13 @@ marked(markdownString [,options] [,callback])
 const marked = require('marked');
 
 // Set options
-// `highlight` example uses `highlight.js`
+// `highlight` example uses https://highlightjs.org
 marked.setOptions({
   renderer: new marked.Renderer(),
-  highlight: function(code) {
-    return require('highlight.js').highlightAuto(code).value;
+  highlight: function(code, lang) {
+    const hljs = require('highlight.js');
+    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+    return hljs.highlight(code, { language }).value;
   },
   pedantic: false,
   gfm: true,
@@ -41,7 +43,7 @@ console.log(marked(markdownString));
 |Member      |Type      |Default  |Since    |Notes         |
 |:-----------|:---------|:--------|:--------|:-------------|
 |baseUrl     |`string`  |`null`   |0.3.9    |A prefix url for any relative link. |
-|breaks      |`boolean` |`false`  |v0.2.7   |If true, add `<br>` on a single line break (copies GitHub). Requires `gfm` be `true`.|
+|breaks      |`boolean` |`false`  |v0.2.7   |If true, add `<br>` on a single line break (copies GitHub behavior on comments, but not on rendered markdown files). Requires `gfm` be `true`.|
 |gfm         |`boolean` |`true`   |v0.2.1   |If true, use approved [GitHub Flavored Markdown (GFM) specification](https://github.github.com/gfm/).|
 |headerIds   |`boolean` |`true`   |v0.4.0   |If true, include an `id` attribute when emitting headings (h1, h2, h3, etc).|
 |headerPrefix|`string`  |`''`     |v0.3.0   |A string to prefix the `id` attribute when emitting headings (h1, h2, h3, etc).|
@@ -49,13 +51,27 @@ console.log(marked(markdownString));
 |langPrefix  |`string`  |`'language-'`|v0.3.0|A string to prefix the className in a `<code>` block. Useful for syntax highlighting.|
 |mangle      |`boolean` |`true`   |v0.3.4   |If true, autolinked email address is escaped with HTML character references.|
 |pedantic    |`boolean` |`false`  |v0.2.1   |If true, conform to the original `markdown.pl` as much as possible. Don't fix original markdown bugs or behavior. Turns off and overrides `gfm`.|
-|renderer    |`object`  |`new Renderer()`|v0.3.0|An object containing functions to render tokens to HTML. See [extensibility](/#/USING_PRO.md) for more details.|
+|renderer    |`object`  |`new Renderer()`|v0.3.0|An object containing functions to render tokens to HTML. See [extensibility](/using_pro) for more details.|
 |sanitize    |`boolean` |`false`  |v0.2.1   |If true, sanitize the HTML passed into `markdownString` with the `sanitizer` function.<br>**Warning**: This feature is deprecated and it should NOT be used as it cannot be considered secure.<br>Instead use a sanitize library, like [DOMPurify](https://github.com/cure53/DOMPurify) (recommended), [sanitize-html](https://github.com/apostrophecms/sanitize-html) or [insane](https://github.com/bevacqua/insane) on the output HTML! |
 |sanitizer   |`function`|`null`   |v0.3.4   |A function to sanitize the HTML passed into `markdownString`.|
 |silent      |`boolean` |`false`  |v0.2.7   |If true, the parser does not throw any exception.|
 |smartLists  |`boolean` |`false`  |v0.2.8   |If true, use smarter list behavior than those found in `markdown.pl`.|
 |smartypants |`boolean` |`false`  |v0.2.9   |If true, use "smart" typographic punctuation for things like quotes and dashes.|
+|tokenizer    |`object`  |`new Tokenizer()`|v1.0.0|An object containing functions to create tokens from markdown. See [extensibility](/using_pro) for more details.|
+|walkTokens   |`function`  |`null`|v1.1.0|A function which is called for every token. See [extensibility](/using_pro) for more details.|
 |xhtml       |`boolean` |`false`  |v0.3.2   |If true, emit self-closing HTML tags for void elements (&lt;br/&gt;, &lt;img/&gt;, etc.) with a "/" as required by XHTML.|
+
+<h2 id="inline">Inline Markdown</h2>
+
+You can parse inline markdown by running markdown through `marked.parseInline`.
+
+```js
+const blockHtml = marked('**strong** _em_');
+console.log(blockHtml); // '<p><strong>strong</strong> <em>em</em></p>'
+
+const inlineHtml = marked.parseInline('**strong** _em_');
+console.log(inlineHtml); // '<strong>strong</strong> <em>em</em>'
+```
 
 <h2 id="highlight">Asynchronous highlighting</h2>
 

@@ -228,7 +228,23 @@ function checkSanitizeDeprecation(opt) {
   }
 }
 
-module.exports = {
+// copied from https://stackoverflow.com/a/5450113/806777
+function repeatString(pattern, count) {
+  if (count < 1) {
+    return '';
+  }
+  let result = '';
+  while (count > 1) {
+    if (count & 1) {
+      result += pattern;
+    }
+    count >>= 1;
+    pattern += pattern;
+  }
+  return result + pattern;
+}
+
+export {
   escape,
   unescape,
   edit,
@@ -239,5 +255,6 @@ module.exports = {
   splitCells,
   rtrim,
   findClosingBracket,
-  checkSanitizeDeprecation
+  checkSanitizeDeprecation,
+  repeatString
 };

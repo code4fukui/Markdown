@@ -124,15 +124,6 @@ async function runBench(options) {
   } catch (e) {
     console.error('Could not bench markdown-it. (Error: %s)', e.message);
   }
-
-  try {
-    await bench('markdown.js', specs, (() => {
-      const md = require('markdown').markdown;
-      return md.toHTML.bind(md);
-    })());
-  } catch (e) {
-    console.error('Could not bench markdown.js. (Error: %s)', e.message);
-  }
 }
 
 async function bench(name, specs, engine) {
@@ -288,11 +279,10 @@ if (!module.parent) {
   process.title = 'marked bench';
   main(process.argv.slice());
 } else {
-  exports = main;
-  exports.main = main;
-  exports.time = time;
-  exports.runBench = runBench;
-  exports.load = load;
-  exports.bench = bench;
-  module.exports = exports;
+  module.exports = main;
+  module.exports.main = main;
+  module.exports.time = time;
+  module.exports.runBench = runBench;
+  module.exports.load = load;
+  module.exports.bench = bench;
 }

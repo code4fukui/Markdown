@@ -53,8 +53,7 @@
     "example": 7,
     "start_line": 424,
     "end_line": 433,
-    "section": "Tabs",
-    "shouldFail": true
+    "section": "Tabs"
   },
   {
     "markdown": "    foo\n\tbar\n",
@@ -390,8 +389,7 @@
     "example": 49,
     "start_line": 963,
     "end_line": 971,
-    "section": "ATX headings",
-    "shouldFail": true
+    "section": "ATX headings"
   },
   {
     "markdown": "Foo *bar*\n=========\n\nFoo *bar*\n---------\n",
@@ -930,8 +928,7 @@
     "example": 116,
     "start_line": 1996,
     "end_line": 2003,
-    "section": "Fenced code blocks",
-    "shouldFail": true
+    "section": "Fenced code blocks"
   },
   {
     "markdown": "```\n``` aaa\n```\n",
@@ -1808,8 +1805,7 @@
     "example": 225,
     "start_line": 3834,
     "end_line": 3843,
-    "section": "List items",
-    "shouldFail": true
+    "section": "List items"
   },
   {
     "markdown": "- one\n\n  two\n",
@@ -1825,8 +1821,7 @@
     "example": 227,
     "start_line": 3860,
     "end_line": 3870,
-    "section": "List items",
-    "shouldFail": true
+    "section": "List items"
   },
   {
     "markdown": " -    one\n\n      two\n",
@@ -1982,8 +1977,7 @@
     "example": 246,
     "start_line": 4192,
     "end_line": 4201,
-    "section": "List items",
-    "shouldFail": true
+    "section": "List items"
   },
   {
     "markdown": "-  foo\n\n   bar\n",
@@ -2138,8 +2132,7 @@
     "example": 265,
     "start_line": 4578,
     "end_line": 4590,
-    "section": "List items",
-    "shouldFail": true
+    "section": "List items"
   },
   {
     "markdown": "10) foo\n    - bar\n",
@@ -2147,8 +2140,7 @@
     "example": 266,
     "start_line": 4595,
     "end_line": 4606,
-    "section": "List items",
-    "shouldFail": true
+    "section": "List items"
   },
   {
     "markdown": "10) foo\n   - bar\n",
@@ -2156,8 +2148,7 @@
     "example": 267,
     "start_line": 4611,
     "end_line": 4621,
-    "section": "List items",
-    "shouldFail": true
+    "section": "List items"
   },
   {
     "markdown": "- - foo\n",
@@ -2189,8 +2180,7 @@
     "example": 271,
     "start_line": 4894,
     "end_line": 4906,
-    "section": "Lists",
-    "shouldFail": true
+    "section": "Lists"
   },
   {
     "markdown": "1. foo\n2. bar\n3) baz\n",
@@ -2198,8 +2188,7 @@
     "example": 272,
     "start_line": 4909,
     "end_line": 4921,
-    "section": "Lists",
-    "shouldFail": true
+    "section": "Lists"
   },
   {
     "markdown": "Foo\n- bar\n- baz\n",
@@ -2265,8 +2254,7 @@
     "example": 280,
     "start_line": 5132,
     "end_line": 5150,
-    "section": "Lists",
-    "shouldFail": true
+    "section": "Lists"
   },
   {
     "markdown": "1. a\n\n  2. b\n\n   3. c\n",
@@ -2274,8 +2262,7 @@
     "example": 281,
     "start_line": 5153,
     "end_line": 5171,
-    "section": "Lists",
-    "shouldFail": true
+    "section": "Lists"
   },
   {
     "markdown": "- a\n - b\n  - c\n   - d\n    - e\n",
@@ -2283,8 +2270,7 @@
     "example": 282,
     "start_line": 5177,
     "end_line": 5191,
-    "section": "Lists",
-    "shouldFail": true
+    "section": "Lists"
   },
   {
     "markdown": "1. a\n\n  2. b\n\n    3. c\n",
@@ -2292,8 +2278,7 @@
     "example": 283,
     "start_line": 5197,
     "end_line": 5214,
-    "section": "Lists",
-    "shouldFail": true
+    "section": "Lists"
   },
   {
     "markdown": "- a\n- b\n\n- c\n",
@@ -2766,8 +2751,7 @@
     "example": 341,
     "start_line": 6003,
     "end_line": 6007,
-    "section": "Code spans",
-    "shouldFail": true
+    "section": "Code spans"
   },
   {
     "markdown": "[not a `link](/foo`)\n",
@@ -2927,8 +2911,7 @@
     "example": 361,
     "start_line": 6390,
     "end_line": 6394,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "aa_\"bb\"_cc\n",
@@ -2976,8 +2959,7 @@
     "example": 367,
     "start_line": 6455,
     "end_line": 6459,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*(*foo*)*\n",
@@ -2985,8 +2967,7 @@
     "example": 368,
     "start_line": 6465,
     "end_line": 6469,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo*bar\n",
@@ -3010,8 +2991,7 @@
     "example": 371,
     "start_line": 6497,
     "end_line": 6501,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "_(_foo_)_\n",
@@ -3019,8 +2999,7 @@
     "example": 372,
     "start_line": 6506,
     "end_line": 6510,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "_foo_bar\n",
@@ -3076,8 +3055,7 @@
     "example": 379,
     "start_line": 6570,
     "end_line": 6574,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "foo**bar**\n",
@@ -3141,8 +3119,7 @@
     "example": 387,
     "start_line": 6641,
     "end_line": 6645,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "__foo, __bar__, baz__\n",
@@ -3150,8 +3127,7 @@
     "example": 388,
     "start_line": 6648,
     "end_line": 6652,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "foo-__(bar)__\n",
@@ -3167,8 +3143,7 @@
     "example": 390,
     "start_line": 6672,
     "end_line": 6676,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "**(**foo)\n",
@@ -3176,8 +3151,7 @@
     "example": 391,
     "start_line": 6685,
     "end_line": 6689,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*(**foo**)*\n",
@@ -3225,8 +3199,7 @@
     "example": 397,
     "start_line": 6742,
     "end_line": 6746,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "_(__foo__)_\n",
@@ -3242,8 +3215,7 @@
     "example": 399,
     "start_line": 6761,
     "end_line": 6765,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "__пристаням__стремятся\n",
@@ -3251,8 +3223,7 @@
     "example": 400,
     "start_line": 6768,
     "end_line": 6772,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "__foo__bar__baz__\n",
@@ -3260,8 +3231,7 @@
     "example": 401,
     "start_line": 6775,
     "end_line": 6779,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "__(bar)__.\n",
@@ -3301,8 +3271,7 @@
     "example": 406,
     "start_line": 6824,
     "end_line": 6828,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "__foo_ bar_\n",
@@ -3310,8 +3279,7 @@
     "example": 407,
     "start_line": 6831,
     "end_line": 6835,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo *bar**\n",
@@ -3351,8 +3319,7 @@
     "example": 412,
     "start_line": 6888,
     "end_line": 6892,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo **bar***\n",
@@ -3360,8 +3327,7 @@
     "example": 413,
     "start_line": 6895,
     "end_line": 6899,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo**bar***\n",
@@ -3369,8 +3335,7 @@
     "example": 414,
     "start_line": 6902,
     "end_line": 6906,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "foo***bar***baz\n",
@@ -3378,8 +3343,7 @@
     "example": 415,
     "start_line": 6913,
     "end_line": 6917,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "foo******bar*********baz\n",
@@ -3387,8 +3351,7 @@
     "example": 416,
     "start_line": 6919,
     "end_line": 6923,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo **bar *baz* bim** bop*\n",
@@ -3396,8 +3359,7 @@
     "example": 417,
     "start_line": 6928,
     "end_line": 6932,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo [*bar*](/url)*\n",
@@ -3453,8 +3415,7 @@
     "example": 424,
     "start_line": 6990,
     "end_line": 6994,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "____foo__ bar__\n",
@@ -3462,8 +3423,7 @@
     "example": 425,
     "start_line": 6997,
     "end_line": 7001,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "**foo **bar****\n",
@@ -3511,8 +3471,7 @@
     "example": 431,
     "start_line": 7041,
     "end_line": 7047,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "**foo [*bar*](/url)**\n",
@@ -3592,8 +3551,7 @@
     "example": 441,
     "start_line": 7122,
     "end_line": 7126,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo**\n",
@@ -3601,8 +3559,7 @@
     "example": 442,
     "start_line": 7129,
     "end_line": 7133,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "***foo**\n",
@@ -3610,8 +3567,7 @@
     "example": 443,
     "start_line": 7136,
     "end_line": 7140,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "****foo*\n",
@@ -3619,8 +3575,7 @@
     "example": 444,
     "start_line": 7143,
     "end_line": 7147,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "**foo***\n",
@@ -3628,8 +3583,7 @@
     "example": 445,
     "start_line": 7150,
     "end_line": 7154,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo****\n",
@@ -3637,8 +3591,7 @@
     "example": 446,
     "start_line": 7157,
     "end_line": 7161,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "foo ___\n",
@@ -3694,8 +3647,7 @@
     "example": 453,
     "start_line": 7209,
     "end_line": 7213,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "_foo__\n",
@@ -3703,8 +3655,7 @@
     "example": 454,
     "start_line": 7220,
     "end_line": 7224,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "___foo__\n",
@@ -3712,8 +3663,7 @@
     "example": 455,
     "start_line": 7227,
     "end_line": 7231,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "____foo_\n",
@@ -3721,8 +3671,7 @@
     "example": 456,
     "start_line": 7234,
     "end_line": 7238,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "__foo___\n",
@@ -3730,8 +3679,7 @@
     "example": 457,
     "start_line": 7241,
     "end_line": 7245,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "_foo____\n",
@@ -3739,8 +3687,7 @@
     "example": 458,
     "start_line": 7248,
     "end_line": 7252,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "**foo**\n",
@@ -3796,8 +3743,7 @@
     "example": 465,
     "start_line": 7307,
     "end_line": 7311,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "***foo***\n",
@@ -3805,8 +3751,7 @@
     "example": 466,
     "start_line": 7316,
     "end_line": 7320,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "_____foo_____\n",
@@ -3814,8 +3759,7 @@
     "example": 467,
     "start_line": 7323,
     "end_line": 7327,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo _bar* baz_\n",
@@ -3839,8 +3783,7 @@
     "example": 470,
     "start_line": 7348,
     "end_line": 7352,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*foo *bar baz*\n",
@@ -3848,8 +3791,7 @@
     "example": 471,
     "start_line": 7355,
     "end_line": 7359,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*[bar*](/url)\n",
@@ -3881,8 +3823,7 @@
     "example": 475,
     "start_line": 7385,
     "end_line": 7389,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "__<a href=\"__\">\n",
@@ -3890,8 +3831,7 @@
     "example": 476,
     "start_line": 7392,
     "end_line": 7396,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "*a `*`*\n",
@@ -3915,8 +3855,7 @@
     "example": 479,
     "start_line": 7413,
     "end_line": 7417,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "__a<http://foo.bar/?q=__>\n",
@@ -3924,8 +3863,7 @@
     "example": 480,
     "start_line": 7420,
     "end_line": 7424,
-    "section": "Emphasis and strong emphasis",
-    "shouldFail": true
+    "section": "Emphasis and strong emphasis"
   },
   {
     "markdown": "[link](/uri \"title\")\n",
@@ -3973,8 +3911,7 @@
     "example": 486,
     "start_line": 7543,
     "end_line": 7547,
-    "section": "Links",
-    "shouldFail": true
+    "section": "Links"
   },
   {
     "markdown": "[link](foo\nbar)\n",
@@ -3998,8 +3935,7 @@
     "example": 489,
     "start_line": 7571,
     "end_line": 7575,
-    "section": "Links",
-    "shouldFail": true
+    "section": "Links"
   },
   {
     "markdown": "[link](<foo\\>)\n",
@@ -4007,8 +3943,7 @@
     "example": 490,
     "start_line": 7579,
     "end_line": 7583,
-    "section": "Links",
-    "shouldFail": true
+    "section": "Links"
   },
   {
     "markdown": "[a](<b)c\n[a](<b)c>\n[a](<b>c)\n",
@@ -4016,8 +3951,7 @@
     "example": 491,
     "start_line": 7588,
     "end_line": 7596,
-    "section": "Links",
-    "shouldFail": true
+    "section": "Links"
   },
   {
     "markdown": "[link](\\(foo\\))\n",

@@ -2,7 +2,7 @@
  * TextRenderer
  * returns only the textual part of the token
  */
-module.exports = class TextRenderer {
+export class TextRenderer {
   // no need for block level renderers
   strong(text) {
     return text;
@@ -17,6 +17,10 @@ module.exports = class TextRenderer {
   }
 
   del(text) {
+    return text;
+  }
+
+  html(text) {
     return text;
   }
 

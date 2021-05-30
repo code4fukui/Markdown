@@ -166,7 +166,7 @@ function setInitialOptions() {
   if ('options' in search) {
     $optionsElem.value = search.options;
   } else {
-    setDefaultOptions();
+    return setDefaultOptions();
   }
 }
 
@@ -183,7 +183,7 @@ function handleIframeLoad() {
 
 function handleInput() {
   inputDirty = true;
-};
+}
 
 function handleVersionChange() {
   if ($markedVerElem.value === 'commit' || $markedVerElem.value === 'pr') {
@@ -256,7 +256,7 @@ function handleChange(panes, visiblePane) {
     }
   }
   return active;
-};
+}
 
 function addCommitVersion(value, text, commit) {
   if (markedVersions[value]) {
@@ -283,7 +283,7 @@ function getPrCommit(pr) {
 
 function setDefaultOptions() {
   if (window.Worker) {
-    messageWorker({
+    return messageWorker({
       task: 'defaults',
       version: markedVersions[$markedVerElem.value]
     });
@@ -322,22 +322,52 @@ function searchToObject() {
   return obj;
 }
 
-function jsonString(input) {
-  var output = (input + '')
-    .replace(/\n/g, '\\n')
-    .replace(/\r/g, '\\r')
-    .replace(/\t/g, '\\t')
-    .replace(/\f/g, '\\f')
-    .replace(/[\\"']/g, '\\$&')
-    .replace(/\u0000/g, '\\0');
-  return '"' + output + '"';
-};
+function isArray(arr) {
+  return Object.prototype.toString.call(arr) === '[object Array]';
+}
+
+function stringRepeat(char, times) {
+  var s = '';
+  for (var i = 0; i < times; i++) {
+    s += char;
+  }
+  return s;
+}
+
+function jsonString(input, level) {
+  level = level || 0;
+  if (isArray(input)) {
+    if (input.length === 0) {
+      return '[]';
+    }
+    var items = [],
+        i;
+    if (!isArray(input[0]) && typeof input[0] === 'object' && input[0] !== null) {
+      for (i = 0; i < input.length; i++) {
+        items.push(stringRepeat(' ', 2 * level) + jsonString(input[i], level + 1));
+      }
+      return '[\n' + items.join('\n') + '\n]';
+    }
+    for (i = 0; i < input.length; i++) {
+      items.push(jsonString(input[i], level));
+    }
+    return '[' + items.join(', ') + ']';
+  } else if (typeof input === 'object' && input !== null) {
+    var props = [];
+    for (var prop in input) {
+      props.push(prop + ':' + jsonString(input[prop], level));
+    }
+    return '{' + props.join(', ') + '}';
+  } else {
+    return JSON.stringify(input);
+  }
+}
 
 function getScrollSize() {
   var e = $activeOutputElem;
 
   return e.scrollHeight - e.clientHeight;
-};
+}
 
 function getScrollPercent() {
   var size = getScrollSize();
@@ -347,11 +377,11 @@ function getScrollPercent() {
   }
 
   return $activeOutputElem.scrollTop / size;
-};
+}
 
 function setScrollPercent(percent) {
   $activeOutputElem.scrollTop = percent * getScrollSize();
-};
+}
 
 function updateLink() {
   var outputType = '';
@@ -422,19 +452,16 @@ function checkForChanges() {
       } else {
         var startTime = new Date();
         var lexed = marked.lexer(markdown, options);
-        var lexedList = [];
-        for (var i = 0; i < lexed.length; i++) {
-          var lexedLine = [];
-          for (var j in lexed[i]) {
-            lexedLine.push(j + ':' + jsonString(lexed[i][j]));
-          }
-          lexedList.push('{' + lexedLine.join(', ') + '}');
-        }
+        var lexedList = jsonString(lexed);
         var parsed = marked.parser(lexed, options);
-        var scrollPercent = getScrollPercent();
-        setParsed(parsed, lexedList.join('\n'));
-        setScrollPercent(scrollPercent);
         var endTime = new Date();
+
+        $previewElem.classList.remove('error');
+        $htmlElem.classList.remove('error');
+        $lexerElem.classList.remove('error');
+        var scrollPercent = getScrollPercent();
+        setParsed(parsed, lexedList);
+        setScrollPercent(scrollPercent);
         delayTime = endTime - startTime;
         setResponseTime(delayTime);
         if (delayTime < 50) {
@@ -446,7 +473,7 @@ function checkForChanges() {
     }
   }
   checkChangeTimeout = window.setTimeout(checkForChanges, delayTime);
-};
+}
 
 function setResponseTime(ms) {
   var amount = ms;
@@ -472,6 +499,7 @@ function setParsed(parsed, lexed) {
   $lexerElem.value = lexed;
 }
 
+var workerPromises = {};
 function messageWorker(message) {
   if (!markedWorker || markedWorker.working) {
     if (markedWorker) {
@@ -499,6 +527,8 @@ function messageWorker(message) {
       clearTimeout(checkChangeTimeout);
       delayTime = 10;
       checkForChanges();
+      workerPromises[e.data.id]();
+      delete workerPromises[e.data.id];
     };
     markedWorker.onerror = markedWorker.onmessageerror = function(err) {
       clearTimeout(markedWorker.timeout);
@@ -522,7 +552,19 @@ function messageWorker(message) {
     markedWorker.working = true;
     workerTimeout(0);
   }
-  markedWorker.postMessage(message);
+  return new Promise(function(resolve) {
+    message.id = uniqueWorkerMessageId();
+    workerPromises[message.id] = resolve;
+    markedWorker.postMessage(message);
+  });
+}
+
+function uniqueWorkerMessageId() {
+  var id;
+  do {
+    id = Math.random().toString(36);
+  } while (id in workerPromises);
+  return id;
 }
 
 function workerTimeout(seconds) {
