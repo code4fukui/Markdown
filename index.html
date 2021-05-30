@@ -27,7 +27,6 @@ onload = async () => {
     const md = await (await fetch(url)).text();
     const html = Markdown.toHTML(md, url);
     add("div").innerHTML = html;
-    console.log(document.body.querySelector("h1"));
     document.title = document.body.querySelector("h1")?.textContent;
   } else {
     add("div").innerHTML = Markdown.toHTML("[Markdown.js](https://github.com/code4fukui/Markdown/)");
