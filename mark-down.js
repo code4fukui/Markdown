@@ -1,8 +1,8 @@
-import { marked } from "./marked.js";
+import { Markdown } from "./Markdown.js";
 
-const markdown = (html, comp) => {
+const markdown = (html, comp, baseUrl) => {
   comp = comp || document.body;
-  comp.innerHTML = marked(html);
+  comp.innerHTML = Markdown.toHTML(html, baseUrl);
 };
 
 class MarkDown extends HTMLElement {
@@ -12,7 +12,7 @@ class MarkDown extends HTMLElement {
     if (src) {
       (async () => {
         const text = await (await fetch(src)).text();
-        markdown(text, this);
+        markdown(text, this, src);
       })();
     } else {
       markdown(this.textContent, this);
@@ -21,5 +21,3 @@ class MarkDown extends HTMLElement {
 }
 
 customElements.define("mark-down", MarkDown);
-
-export { markdown };
