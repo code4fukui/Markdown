@@ -28,12 +28,12 @@ HTML拡張タグで外部ファイルを読み込めます（extended HTML tag s
 
 URLパラメーターで外部ファイルを読み込めます（runs as link)
 ```html
-https://code4fukui.github.io/Markdown/?url=https:/code4fukui.github.io/Markdown/test/test.md
+https://code4fukui.github.io/Markdown/?url=https://code4fukui.github.io/Markdown/test/test.md
 ```
 
 URLパラメーターで外部ファイルをCSSと共に読み込めます（runs as link with css)
 ```html
-https://code4fukui.github.io/Markdown/?url=https:/code4fukui.github.io/Markdown/test/test.md&https:/code4fukui.github.io/Markdown/test/style.css
+https://code4fukui.github.io/Markdown/?url=https://code4fukui.github.io/Markdown/test/test.md&css=https://code4fukui.github.io/Markdown/test/style.css
 ```
 
 ## What is Markdown
