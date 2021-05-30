@@ -1,6 +1,7 @@
 <meta charset="utf-8"><script type="module">
 import { add, create, style, getQueryParam } from "https://js.sabae.cc/stdom.js";
-import { Markdown } from "https://code4fukui.github.io/Markdown/Markdown.js";
+//import { Markdown } from "https://code4fukui.github.io/Markdown/Markdown.js";
+import { Markdown } from "../Markdown.js";
 
 onload = async () => {
   style({
@@ -26,6 +27,8 @@ onload = async () => {
     const md = await (await fetch(url)).text();
     const html = Markdown.toHTML(md, url);
     add("div").innerHTML = html;
+    console.log(document.body.querySelector("h1"));
+    document.title = document.body.querySelector("h1")?.textContent;
   } else {
     add("div").innerHTML = Markdown.toHTML("[Markdown.js](https://github.com/code4fukui/Markdown/)");
   }
