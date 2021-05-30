@@ -1,0 +1,33 @@
+<meta charset="utf-8"><script type="module">
+import { add, create, style, getQueryParam } from "https://js.sabae.cc/stdom.js";
+import { Markdown } from "https://code4fukui.github.io/Markdown/Markdown.js";
+
+onload = async () => {
+  style({
+    a: { "word-break": "break-all" },
+    pre: { "white-space": "pre-wrap" },
+    code: { "font-size": "1.3em" },
+    td: { "text-align": "left" },
+    th: { "text-align": "left" },
+    img: { "max-width": "90vw" },
+  });
+
+  const css = getQueryParam("css");
+  if (css) {
+    const c = create("link");
+    c.setAttribute("rel", "stylesheet");
+    c.setAttribute("type", "text/css");
+    c.setAttribute("href", css);
+    document.head.appendChild(c);
+  }
+
+  const url = getQueryParam("url");
+  if (url) {
+    const md = await (await fetch(url)).text();
+    const html = Markdown.toHTML(md, url);
+    add("div").innerHTML = html;
+  } else {
+    add("div").innerHTML = Markdown.toHTML("[Markdown.js](https://github.com/code4fukui/Markdown/)");
+  }
+};
+</script>
