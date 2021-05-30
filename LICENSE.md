@@ -8,6 +8,7 @@ all code is your original work. `</legalese>`
 
 ## Marked
 
+Copyright (c) 2021, Markdown (https://github.com/code4fukui/Markdown/)
 Copyright (c) 2018+, MarkedJS (https://github.com/markedjs/)
 Copyright (c) 2011-2018, Christopher Jeffrey (https://github.com/chjj/)
 
