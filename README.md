@@ -1,23 +1,17 @@
-# Markdown
+# Markdown.js
 
 Markdown.js is an ES module forked [Marked](https://marked.js.org/)  
 
 ## Usage
 
-ブラウザやDenoで使えます (runs on browsers and Deno)
-```js
-import { Markdown } from "https://code4fukui.github.io/Markdown/Markdown.js";
-
-const html = Markdown.toHTML("# title");
-console.log(html); // <h1 id="title">title</h1>
+URLパラメーターで外部ファイルを読み込めます（runs as link)
+```html
+https://code4fukui.github.io/Markdown/?url=https://code4fukui.github.io/Markdown/test/test.md
 ```
 
-HTML拡張タグとして使えます（extended HTML tag)
+URLパラメーターで外部ファイルをCSSと共に読み込めます（runs as link with css)
 ```html
-<script type="module" src="https://code4fukui.github.io/Markdown/mark-down.js"></script>
-<mark-down>
-# title
-</mark-down>
+https://code4fukui.github.io/Markdown/?url=https://code4fukui.github.io/Markdown/test/test.md&css=https://code4fukui.github.io/Markdown/test/style.css
 ```
 
 HTML拡張タグで外部ファイルを読み込めます（extended HTML tag supports the outer file)
@@ -26,14 +20,20 @@ HTML拡張タグで外部ファイルを読み込めます（extended HTML tag s
 <mark-down src="test.md"></mark-down>
 ```
 
-URLパラメーターで外部ファイルを読み込めます（runs as link)
+HTML拡張タグ内にMarkdownが記述できます（extended HTML tag)
 ```html
-https://code4fukui.github.io/Markdown/?url=https:/code4fukui.github.io/Markdown/test/test.md
+<script type="module" src="https://code4fukui.github.io/Markdown/mark-down.js"></script>
+<mark-down>
+# title
+</mark-down>
 ```
 
-URLパラメーターで外部ファイルをCSSと共に読み込めます（runs as link with css)
-```html
-https://code4fukui.github.io/Markdown/?url=https:/code4fukui.github.io/Markdown/test/test.md&https:/code4fukui.github.io/Markdown/test/style.css
+ブラウザやDenoで使えます (runs on browsers and Deno)
+```js
+import { Markdown } from "https://code4fukui.github.io/Markdown/Markdown.js";
+
+const html = Markdown.toHTML("# title");
+console.log(html); // <h1 id="title">title</h1>
 ```
 
 ## What is Markdown
