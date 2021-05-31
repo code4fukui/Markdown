@@ -1,9 +1,34 @@
 <meta charset="utf-8"><script type="module">
-import { add, create, style, getQueryParam, getHash } from "https://js.sabae.cc/stdom.js";
-//import { Markdown } from "https://code4fukui.github.io/Markdown/Markdown.js";
-import { Markdown } from "./Markdown.js";
+import { add, create, style, css, getQueryParam, getHash } from "https://js.sabae.cc/stdom.js";
+import { Markdown } from "https://code4fukui.github.io/Markdown/Markdown.js";
+//import { Markdown } from "./Markdown.js";
+
+const editview = (url, cssurl) => {
+  add("div").innerHTML = `<h1>Markdown</h1>
+    <input id=inp_markdown placeholder="Markdown URL (*.md)" value="${url}"><br>
+    <input id=inp_css placeholder="CSS URL (option)" value="${cssurl}""><br>
+    <button id=btn_open>open</button>
+    <hr>
+    <a href=https://github.com/code4fukui/Markdown/>Markdown by Code for Fukui</a>
+    `;
+  css();
+  style({ input: { width: "90%", padding: ".3em", margin: ".5em 0" }});
+  btn_open.onclick = () => {
+    const enc = (s) => s.replace(/&/g, encodeURIComponent("&")).replace(/\?/g, encodeURIComponent("?"));
+    const base = location.protocol == "file:" ? "index.html" : "./";
+    const url = base + "?url=" + enc(inp_markdown.value) + (inp_css.value ? "&css=" + enc(inp_css.value) : "");
+    window.open(url, "_blank");
+  };
+};
 
 onload = async () => {
+  const cssurl = getQueryParam("css");
+  const url = getQueryParam("url");
+  if (getQueryParam("edit") == "on" || !url) {
+    editview(url, cssurl);
+    return;
+  }
+
   style({
     a: { "word-break": "break-all" },
     pre: { "white-space": "pre-wrap", "border": "1px solid gray", "padding": ".5em" },
@@ -12,25 +37,14 @@ onload = async () => {
     th: { "text-align": "left" },
     img: { "max-width": "90vw" },
   });
-
-  const css = getQueryParam("css");
-  if (css) {
-    const c = create("link");
-    c.setAttribute("rel", "stylesheet");
-    c.setAttribute("type", "text/css");
-    c.setAttribute("href", css);
-    document.head.appendChild(c);
+  if (cssurl) {
+    css(cssurl);
   }
 
-  const url = getQueryParam("url");
-  if (url) {
-    const md = await (await fetch(url)).text();
-    const html = Markdown.toHTML(md, url);
-    add("div").innerHTML = html;
-    document.title = document.body.querySelector("h1")?.textContent;
-  } else {
-    add("div").innerHTML = Markdown.toHTML("[Markdown.js](https://github.com/code4fukui/Markdown/)");
-  }
+  const md = await (await fetch(url)).text();
+  const html = Markdown.toHTML(md, url);
+  add("div").innerHTML = html;
+  document.title = document.body.querySelector("h1")?.textContent;
 
   const hash = getHash();
   if (hash) {
