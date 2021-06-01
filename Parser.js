@@ -2,9 +2,7 @@ import { Renderer } from './Renderer.js';
 import { TextRenderer } from './TextRenderer.js';
 import { Slugger } from './Slugger.js';
 import { defaults } from './defaults.js';
-import {
-  unescape
-} from './helpers.js';
+import { unescape } from './helpers.js';
 
 /**
  * Parsing & Compiling
@@ -40,9 +38,6 @@ export class Parser {
    */
   parse(tokens, top = true) {
     let out = '',
-      i,
-      j,
-      k,
       l2,
       l3,
       row,
@@ -60,7 +55,8 @@ export class Parser {
       checkbox;
 
     const l = tokens.length;
-    for (i = 0; i < l; i++) {
+    let nowlevel = 0;
+    for (let i = 0; i < l; i++) {
       token = tokens[i];
       switch (token.type) {
         case 'space': {
@@ -71,9 +67,28 @@ export class Parser {
           continue;
         }
         case 'heading': {
+          const level = token.depth;
+          if (nowlevel == 0) {
+            nowlevel = 1;
+            for (let j = nowlevel; j <= level; j++) {
+              out += "<section>\n";
+            }
+          } else if (level == nowlevel) {
+            out += "</section>\n<section>\n";
+          } else if (level > nowlevel) {
+            for (let j = nowlevel; j < level; j++) {
+              out += "<section>\n";
+            }
+          } else {
+            for (let j = nowlevel; j >= level; j--) {
+              out += "</section>\n";
+            }
+            out += "<section>\n";
+          }
+          nowlevel = level;
           out += this.renderer.heading(
             this.parseInline(token.tokens),
-            token.depth,
+            level,
             unescape(this.parseInline(token.tokens, this.textRenderer)),
             this.slugger);
           continue;
@@ -90,7 +105,7 @@ export class Parser {
           // header
           cell = '';
           l2 = token.header.length;
-          for (j = 0; j < l2; j++) {
+          for (let j = 0; j < l2; j++) {
             cell += this.renderer.tablecell(
               this.parseInline(token.tokens.header[j]),
               { header: true, align: token.align[j] }
@@ -100,12 +115,12 @@ export class Parser {
 
           body = '';
           l2 = token.cells.length;
-          for (j = 0; j < l2; j++) {
+          for (let j = 0; j < l2; j++) {
             row = token.tokens.cells[j];
 
             cell = '';
             l3 = row.length;
-            for (k = 0; k < l3; k++) {
+            for (let k = 0; k < l3; k++) {
               cell += this.renderer.tablecell(
                 this.parseInline(row[k]),
                 { header: false, align: token.align[k] }
@@ -129,7 +144,7 @@ export class Parser {
           l2 = token.items.length;
 
           body = '';
-          for (j = 0; j < l2; j++) {
+          for (let j = 0; j < l2; j++) {
             item = token.items[j];
             checked = item.checked;
             task = item.task;
@@ -188,6 +203,11 @@ export class Parser {
             throw new Error(errMsg);
           }
         }
+      }
+    }
+    if (nowlevel > 0) {
+      for (let j = nowlevel; j >= 1; j--) {
+        out += "</section>\n";
       }
     }
 
