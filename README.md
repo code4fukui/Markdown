@@ -4,6 +4,10 @@ Markdown.js is an ES module forked [Marked](https://marked.js.org/)
 
 ## Usage
 
+MarkdownのURLを指定して表示できます（CSSも指定可能）
+![image](https://user-images.githubusercontent.com/1715217/120247226-b82cb300-c2ad-11eb-8f32-c0223118df53.png)
+https://code4fukui.github.io/Markdown/
+
 URLパラメーターで外部ファイルを読み込めます（runs as link)
 ```html
 https://code4fukui.github.io/Markdown/?url=https://code4fukui.github.io/Markdown/test/test.md
@@ -40,3 +44,11 @@ console.log(html); // <h1 id="title">title</h1>
 
 Daring Fireball: Markdown  
 https://daringfireball.net/projects/markdown/  
+
+## Using at
+「研究開発型スタートアップと事業会社のオープンイノベーション促進のためのモデル契約書ver1.0」の改訂に向けた、GitHub（ギットハブ）を用いた意見募集  
+https://github.com/meti-oi-startups/METI-JPO-Model-Contract  
+
+
+
+
