@@ -1,6 +1,8 @@
 # Markdown.js
 
-Markdown.js is an ES module forked [Marked](https://marked.js.org/)  
+> 日本語のREADMEはこちらです: [README.ja.md](README.ja.md)
+
+Markdown.js is an ES module forked [Marked](https://marked.js.org/).
 
 ## Usage
 
