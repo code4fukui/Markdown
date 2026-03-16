@@ -1,4 +1,4 @@
-# Markdown
+# Markdown.js
 
 Markdown.js は[Marked](https://marked.js.org/)から派生したES moduleです。
 
